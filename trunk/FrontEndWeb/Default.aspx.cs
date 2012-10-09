@@ -15,7 +15,7 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void ButtonAdd_Click(object sender, EventArgs e)
     {
-        int total = ws.addMethod(Convert.ToInt32(txtOp1.Text), Convert.ToInt32(txtOp2.Text));
+        int total = ws.addMethod(Convert.ToInt32(txtUsername.Text), Convert.ToInt32(txtPassword.Text));
         txtTotal.Text = total.ToString();
     }
 }

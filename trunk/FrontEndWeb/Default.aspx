@@ -20,26 +20,28 @@
     <table class="style1">
         <tr>
             <td>
-                <asp:TextBox ID="txtOp1" runat="server"></asp:TextBox>
+                <asp:Label ID="LabelUsername" runat="server" Text="Username:"></asp:Label>
             </td>
             <td>
-                &nbsp;</td>
+                <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox>
+            </td>
         </tr>
         <tr>
             <td>
-                <asp:TextBox ID="txtOp2" runat="server"></asp:TextBox>
+                <asp:Label ID="LabelPassword" runat="server" Text="Password:"></asp:Label>
             </td>
             <td>
-                &nbsp;</td>
+                <asp:TextBox ID="txtPassword" runat="server" input type="password"></asp:TextBox>
+            </td>
         </tr>
         <tr>
             <td>
                 <asp:TextBox ID="txtTotal" runat="server"></asp:TextBox>
-                <asp:Button ID="ButtonAdd" runat="server" Height="26px" Text="Button" 
-                    Width="128px" onclick="ButtonAdd_Click" />
             </td>
             <td>
-                &nbsp;</td>
+                <asp:Button ID="BtnLogin" runat="server" Height="26px" Text="Login" 
+                    Width="128px" onclick="ButtonAdd_Click" />
+            </td>
         </tr>
     </table>
     </form>
