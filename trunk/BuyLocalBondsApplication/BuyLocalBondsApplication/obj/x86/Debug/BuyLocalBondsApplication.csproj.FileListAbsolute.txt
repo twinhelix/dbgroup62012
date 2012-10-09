@@ -1,0 +1,8 @@
+C:\Users\Danny\documents\visual studio 2010\Projects\BuyLocalBondsApplication\BuyLocalBondsApplication\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Danny\documents\visual studio 2010\Projects\BuyLocalBondsApplication\BuyLocalBondsApplication\bin\Debug\BuyLocalBondsApplication.exe.config
+C:\Users\Danny\documents\visual studio 2010\Projects\BuyLocalBondsApplication\BuyLocalBondsApplication\bin\Debug\BuyLocalBondsApplication.exe
+C:\Users\Danny\documents\visual studio 2010\Projects\BuyLocalBondsApplication\BuyLocalBondsApplication\bin\Debug\BuyLocalBondsApplication.pdb
+C:\Users\Danny\documents\visual studio 2010\Projects\BuyLocalBondsApplication\BuyLocalBondsApplication\bin\Debug\BuyLocalBondLibrary.dll
+C:\Users\Danny\documents\visual studio 2010\Projects\BuyLocalBondsApplication\BuyLocalBondsApplication\bin\Debug\BuyLocalBondLibrary.pdb
+C:\Users\Danny\documents\visual studio 2010\Projects\BuyLocalBondsApplication\BuyLocalBondsApplication\obj\x86\Debug\BuyLocalBondsApplication.exe
+C:\Users\Danny\documents\visual studio 2010\Projects\BuyLocalBondsApplication\BuyLocalBondsApplication\obj\x86\Debug\BuyLocalBondsApplication.pdb
