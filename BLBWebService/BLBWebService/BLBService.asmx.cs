@@ -19,16 +19,18 @@ namespace BLBWebService
     public class BLBService : System.Web.Services.WebService
     {
 
-        [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
+        SqlBean sb = new SqlBean();
+
         [WebMethod]
         public DataSet GetBonds()
         {
-            SqlBean sb = new SqlBean();
             return sb.GetBonds();
+        }
+
+        [WebMethod]
+        public bool Login(string username, string password)
+        {
+            return sb.Authenticate(username,password);
         }
     }
 }
