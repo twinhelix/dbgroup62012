@@ -1,0 +1,5 @@
+C:\BLB\BLBUserInterface\BLBUserInterface\bin\BLBUserInterface.dll
+C:\BLB\BLBUserInterface\BLBUserInterface\bin\BLBUserInterface.pdb
+C:\BLB\BLBUserInterface\BLBUserInterface\obj\Debug\ResolveAssemblyReference.cache
+C:\BLB\BLBUserInterface\BLBUserInterface\obj\Debug\BLBUserInterface.dll
+C:\BLB\BLBUserInterface\BLBUserInterface\obj\Debug\BLBUserInterface.pdb

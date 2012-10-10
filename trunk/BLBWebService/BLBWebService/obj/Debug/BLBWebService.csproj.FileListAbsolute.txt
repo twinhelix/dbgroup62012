@@ -1,0 +1,5 @@
+C:\BLB\BLBWebService\BLBWebService\bin\BLBWebService.dll
+C:\BLB\BLBWebService\BLBWebService\bin\BLBWebService.pdb
+C:\BLB\BLBWebService\BLBWebService\obj\Debug\ResolveAssemblyReference.cache
+C:\BLB\BLBWebService\BLBWebService\obj\Debug\BLBWebService.dll
+C:\BLB\BLBWebService\BLBWebService\obj\Debug\BLBWebService.pdb
