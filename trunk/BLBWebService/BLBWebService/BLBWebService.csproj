@@ -107,6 +107,8 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AppCode\SearchEngine.cs" />
+    <Compile Include="AppCode\SearchType.cs" />
     <Compile Include="AppCode\SqlBean.cs" />
     <Compile Include="BLBService.asmx.cs">
       <DependentUpon>BLBService.asmx</DependentUpon>
