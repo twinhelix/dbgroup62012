@@ -20,6 +20,7 @@ namespace BLBWebService
     {
 
         SqlBean sb = new SqlBean();
+        SearchEngine se = new SearchEngine();
 
         [WebMethod]
         public DataSet GetBonds()
@@ -31,6 +32,12 @@ namespace BLBWebService
         public bool Login(string username, string password)
         {
             return sb.Authenticate(username,password);
+        }
+
+        [WebMethod]
+        public DataSet Search(SearchType type, string searchString)
+        {
+            return se.SearchBond(type, searchString);
         }
     }
 }

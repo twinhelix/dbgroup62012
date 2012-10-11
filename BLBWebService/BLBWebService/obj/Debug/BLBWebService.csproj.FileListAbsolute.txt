@@ -3,3 +3,8 @@ C:\BLB\BLBWebService\BLBWebService\bin\BLBWebService.pdb
 C:\BLB\BLBWebService\BLBWebService\obj\Debug\ResolveAssemblyReference.cache
 C:\BLB\BLBWebService\BLBWebService\obj\Debug\BLBWebService.dll
 C:\BLB\BLBWebService\BLBWebService\obj\Debug\BLBWebService.pdb
+C:\Documents and Settings\Student\Desktop\Project\BLBWebService\BLBWebService\bin\BLBWebService.dll
+C:\Documents and Settings\Student\Desktop\Project\BLBWebService\BLBWebService\bin\BLBWebService.pdb
+C:\Documents and Settings\Student\Desktop\Project\BLBWebService\BLBWebService\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Student\Desktop\Project\BLBWebService\BLBWebService\obj\Debug\BLBWebService.dll
+C:\Documents and Settings\Student\Desktop\Project\BLBWebService\BLBWebService\obj\Debug\BLBWebService.pdb
