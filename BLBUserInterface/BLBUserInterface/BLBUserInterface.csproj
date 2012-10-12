@@ -57,6 +57,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="BondSearchPage.aspx" />
+    <Content Include="CustomerPortfolio.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Global.asax" />
@@ -123,6 +124,13 @@
     </Compile>
     <Compile Include="BondSearchPage.aspx.designer.cs">
       <DependentUpon>BondSearchPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerPortfolio.aspx.cs">
+      <DependentUpon>CustomerPortfolio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerPortfolio.aspx.designer.cs">
+      <DependentUpon>CustomerPortfolio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
