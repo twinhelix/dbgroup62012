@@ -65,6 +65,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetCustomerPortfolio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="customerID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerPortfolioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerPortfolioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetBondsSoapIn">
@@ -85,6 +106,12 @@
   <wsdl:message name="SearchSoapOut">
     <wsdl:part name="parameters" element="tns:SearchResponse" />
   </wsdl:message>
+  <wsdl:message name="GetCustomerPortfolioSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerPortfolio" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerPortfolioSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerPortfolioResponse" />
+  </wsdl:message>
   <wsdl:portType name="BLBServiceSoap">
     <wsdl:operation name="GetBonds">
       <wsdl:input message="tns:GetBondsSoapIn" />
@@ -97,6 +124,10 @@
     <wsdl:operation name="Search">
       <wsdl:input message="tns:SearchSoapIn" />
       <wsdl:output message="tns:SearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerPortfolio">
+      <wsdl:input message="tns:GetCustomerPortfolioSoapIn" />
+      <wsdl:output message="tns:GetCustomerPortfolioSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BLBServiceSoap" type="tns:BLBServiceSoap">
@@ -128,6 +159,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetCustomerPortfolio">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerPortfolio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="BLBServiceSoap12" type="tns:BLBServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -151,6 +191,15 @@
     </wsdl:operation>
     <wsdl:operation name="Search">
       <soap12:operation soapAction="http://tempuri.org/Search" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerPortfolio">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerPortfolio" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

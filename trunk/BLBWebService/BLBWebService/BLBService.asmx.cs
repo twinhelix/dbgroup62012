@@ -39,5 +39,12 @@ namespace BLBWebService
         {
             return se.SearchBond(type, searchString);
         }
+
+        [WebMethod]
+        public DataSet GetCustomerPortfolio(string customerID)
+        {
+            CustomerPortfolio cp = new CustomerPortfolio(customerID);
+            return cp.GetPortfolio();
+        }
     }
 }

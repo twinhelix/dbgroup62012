@@ -36,6 +36,8 @@ namespace BLBUserInterface.BLBService {
         
         private System.Threading.SendOrPostCallback SearchOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetCustomerPortfolioOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -82,6 +84,9 @@ namespace BLBUserInterface.BLBService {
         
         /// <remarks/>
         public event SearchCompletedEventHandler SearchCompleted;
+        
+        /// <remarks/>
+        public event GetCustomerPortfolioCompletedEventHandler GetCustomerPortfolioCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetBonds", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -169,6 +174,35 @@ namespace BLBUserInterface.BLBService {
             if ((this.SearchCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SearchCompleted(this, new SearchCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCustomerPortfolio", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet GetCustomerPortfolio(string customerID) {
+            object[] results = this.Invoke("GetCustomerPortfolio", new object[] {
+                        customerID});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetCustomerPortfolioAsync(string customerID) {
+            this.GetCustomerPortfolioAsync(customerID, null);
+        }
+        
+        /// <remarks/>
+        public void GetCustomerPortfolioAsync(string customerID, object userState) {
+            if ((this.GetCustomerPortfolioOperationCompleted == null)) {
+                this.GetCustomerPortfolioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCustomerPortfolioOperationCompleted);
+            }
+            this.InvokeAsync("GetCustomerPortfolio", new object[] {
+                        customerID}, this.GetCustomerPortfolioOperationCompleted, userState);
+        }
+        
+        private void OnGetCustomerPortfolioOperationCompleted(object arg) {
+            if ((this.GetCustomerPortfolioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetCustomerPortfolioCompleted(this, new GetCustomerPortfolioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -278,6 +312,32 @@ namespace BLBUserInterface.BLBService {
         private object[] results;
         
         internal SearchCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    public delegate void GetCustomerPortfolioCompletedEventHandler(object sender, GetCustomerPortfolioCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.1")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetCustomerPortfolioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetCustomerPortfolioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
