@@ -10,10 +10,25 @@
     <form id="form1" runat="server">
     <div>
     
-        <asp:Label ID="LabelBonds" runat="server" Text="DB Bonds"></asp:Label>
+        <asp:Label ID="LabelBonds" runat="server" Text="DB Bonds Market"></asp:Label>
     
         <asp:GridView ID="GVBonds" runat="server">
+        <Columns>
+    <asp:TemplateField HeaderText = "Select Bond">
+               <ItemTemplate>
+                  <input name ="RadioButton" type = "radio" value='<%# Eval("CUSIP") %>' />
+               </ItemTemplate>
+              </asp:TemplateField>
+              </Columns>
         </asp:GridView>
+    
+        <br />
+        <asp:Label ID="BuyLabel" runat="server" Text="Select bond to buy"></asp:Label>
+    <br />
+    <asp:Label ID="LabelQuantity" runat="server" Text="Quantity to Buy: "></asp:Label>
+    <asp:TextBox ID="TBQuantity" runat="server"></asp:TextBox>
+    <asp:Button ID="BTNBuy" runat="server" Text="Buy Selected Bond" 
+        onclick="BTNBuy_Click" />
     
         </div>
     </form>

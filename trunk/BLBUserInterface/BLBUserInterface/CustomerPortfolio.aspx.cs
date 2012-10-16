@@ -37,5 +37,29 @@ namespace BLBUserInterface
             }
         }
 
+        protected void BTNSell_Click(object sender, EventArgs e)
+        {
+            String cusip = Request.Form["RadioButton"];
+            try
+            {
+                int quantity = Convert.ToInt32(TBQuantity.Text);
+                if (cusip != null)
+                {
+                    BuyLabel.Text = "Selected Bond: " + cusip;
+                }
+                else
+                {
+                    BuyLabel.Text = "Please select bond to Sell!";
+                }
+            }
+            catch (Exception)
+            {
+                BuyLabel.Text = "Incorrect Quantity";
+            }
+
+
+            // searchengine.SellBond(customerid, cusip, quantity);
+        }
+
     }
 }

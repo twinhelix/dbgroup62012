@@ -55,13 +55,35 @@ namespace BLBUserInterface
                     GVSearchResult.DataSource = ds.Tables[0];
                     GVSearchResult.DataBind();
                 }
-
             }
             else
             {
                 GVSearchResult.DataSource = null;
                 GVSearchResult.DataBind();
             }
+        }
+
+        protected void BTNBuy_Click(object sender, EventArgs e)
+        {
+            String cusip = Request.Form["RadioButton"];
+            try
+            {
+                int quantity = Convert.ToInt32(TBQuantity.Text);
+                if (cusip != null)
+                {
+                    BuyLabel.Text = "Selected Bond: " + cusip;
+                }
+                else
+                {
+                    BuyLabel.Text = "Please select bond to buy!";
+                }
+            }
+            catch (Exception)
+            {
+                BuyLabel.Text = "Incorrect Quantity";
+            }
+
+            // searchengine.BuyBond(customerid, cusip, quantity);
         }
     }
 }

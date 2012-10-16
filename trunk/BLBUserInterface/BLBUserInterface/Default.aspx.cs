@@ -23,5 +23,29 @@ namespace BLBUserInterface
             GVBonds.DataSource = ds.Tables[0];
             GVBonds.DataBind();
         }
+
+        protected void BTNBuy_Click(object sender, EventArgs e)
+        {
+            String cusip = Request.Form["RadioButton"];
+            try
+            {
+                int quantity = Convert.ToInt32(TBQuantity.Text);
+                if (cusip != null)
+                {
+                    BuyLabel.Text = "Selected Bond: " + cusip;
+                }
+                else
+                {
+                    BuyLabel.Text = "Please select bond to buy!";
+                }
+            }
+            catch (Exception)
+            {
+                BuyLabel.Text = "Incorrect Quantity";
+            }
+
+
+            // searchengine.BuyBond(customerid, cusip, quantity);
+        }
     }
 }
