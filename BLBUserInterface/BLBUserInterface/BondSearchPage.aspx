@@ -51,8 +51,25 @@
         </tr>
     </table>
     <asp:GridView ID="GVSearchResult" runat="server">
+    <Columns>
+    <asp:TemplateField HeaderText = "Select Bond">
+               <ItemTemplate>
+                  <input name ="RadioButton" type = "radio" value='<%# Eval("CUSIP") %>' />
+               </ItemTemplate>
+              </asp:TemplateField>
+              </Columns>
     </asp:GridView>
     <asp:Label ID="LabelResults" runat="server" Text="No results found!"></asp:Label>
+    <br />
+    <br />
+        <asp:Label ID="BuyLabel" runat="server" Text="Select bond to buy"></asp:Label>
+    <br />
+    <asp:Label ID="LabelQuantity" runat="server" Text="Quantity to Buy: "></asp:Label>
+    <asp:TextBox ID="TBQuantity" runat="server"></asp:TextBox>
+    <asp:Button ID="BTNBuy" runat="server" Text="Buy Selected Bond" 
+        onclick="BTNBuy_Click" />
+    <p>
+        &nbsp;</p>
     </form>
 </body>
 </html>
