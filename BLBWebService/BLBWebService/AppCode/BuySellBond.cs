@@ -41,7 +41,7 @@ namespace BLBWebService.AppCode
                 float price = (float)Convert.ToDouble(ds.Tables[0].Rows[0]["Ask"]);
                 float totalSpend = price * qty;
 
-                float currentCash = getAmount();
+                float currentCash = getCustomerCash();
                 if (totalSpend > currentCash)
                 {
                     return false;
@@ -82,6 +82,71 @@ namespace BLBWebService.AppCode
 
                 if (result != -1)
                 {
+                    InsertIntoTransactionsTable(new Transaction());
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool SellBond(string cusip, int qty)
+        {
+            // Check to see if user has said bond
+            int currentQty = checkQuantity(cusip);
+            if (currentQty < qty || currentQty <= 0)
+            {
+                return false;
+            }
+
+            // Get bond characteristics from the market
+            string queryStringCheck = "SELECT CUSIP, Bid FROM Bonds WHERE CUSIP = @CUSIP";
+            SqlCommand command = new SqlCommand(queryStringCheck, _con);
+            command.Parameters.AddWithValue("@CUSIP", cusip);
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            da.Fill(ds, "bonds");
+            bool validBond = ds.Tables[0].AsEnumerable().Any(row => cusip == row.Field<String>("CUSIP"));
+
+            // Bond is a valid in the market
+            if (validBond)
+            {
+                // Get the price of the bond (Bid Price)
+                float bidPrice = (float)Convert.ToDouble(ds.Tables[0].Rows[0]["Bid"]);
+                float sellAmount = bidPrice * qty;
+
+                // Update the customer's cash holdings
+                updateCustomerCash(sellAmount + getCustomerCash());
+
+                // Update the customer's bond holdings
+
+                string queryString = "";
+
+
+                int remainingQty = currentQty - qty;
+                if (remainingQty == 0)
+                {
+                    // No more holdings of said bond. Delete from holdings table
+                    queryString = "DELETE FROM CustomerPortfolio WHERE CUSIP = @Cusip AND CustomerID = @CustomerID";
+                }
+                else
+                {
+                    // Still remaining bonds, update quantity
+                    queryString = "UPDATE CustomerPortfolio SET Qty = @Qty WHERE CUSIP = @Cusip AND CustomerID = @CustomerID";
+                }
+
+                // TODO: Determine whether to put into market or not
+                command = new SqlCommand(queryString, _con);
+
+                command.Parameters.AddWithValue("@CUSIP", cusip);
+                command.Parameters.AddWithValue("@CustomerID", _id);
+
+                _con.Open();
+                var result = command.ExecuteNonQuery();
+                _con.Close();
+
+                if (result != -1)
+                {
+                    InsertIntoTransactionsTable(new Transaction());
                     return true;
                 }
             }
@@ -110,7 +175,7 @@ namespace BLBWebService.AppCode
 
             command.Parameters.AddWithValue("@CustomerID", _id);
             command.Parameters.AddWithValue("@Cash", currentCash);
-            
+
             _con.Open();
             var result = command.ExecuteNonQuery();
             _con.Close();
@@ -128,7 +193,7 @@ namespace BLBWebService.AppCode
             SqlDataAdapter da = new SqlDataAdapter(command);
             da.Fill(ds, "bonds");
 
-            if (ds.Tables[0].Rows.Count >0)
+            if (ds.Tables[0].Rows.Count > 0)
             {
                 existingQty = Convert.ToInt32(ds.Tables[0].Rows[0]["Qty"]);
             }
@@ -136,7 +201,7 @@ namespace BLBWebService.AppCode
             return existingQty;
         }
 
-        private float getAmount()
+        private float getCustomerCash()
         {
             string queryStringCheck = "SELECT * FROM Customer WHERE CustomerID = @CustomerID";
             SqlCommand command = new SqlCommand(queryStringCheck, _con);
@@ -153,14 +218,17 @@ namespace BLBWebService.AppCode
             return 0;
         }
 
-        public bool SellBond(string cusip)
+        private void InsertIntoTransactionsTable(Transaction t)
         {
-            string sqlString = "";
-            SqlCommand command = new SqlCommand(sqlString, _con);
 
-
-            return false;
         }
+    }
 
+    public class Transaction
+    {
+        public Transaction()
+        {
+
+        }
     }
 }
